@@ -61,7 +61,16 @@ package coh_noc_pkg;
         SNP_CLEAN_SHARED    = 8'h25,
         SNP_CLEAN_INVALID   = 8'h26,
         SNP_MAKE_INVALID    = 8'h27,
-        SNP_DVM_OP          = 8'h28
+        SNP_DVM_OP          = 8'h28,
+        // Forward Snoop Opcodes for DCT (Direct Cache Transfer)
+        SNP_FWD_SHARED      = 8'h30,
+        SNP_FWD_CLEAN       = 8'h31,
+        SNP_FWD_ONCE        = 8'h32,
+        SNP_FWD_NOT_SHARED_DIRTY = 8'h33,
+        SNP_FWD_UNIQUE      = 8'h34,
+        SNP_FWD_CLEAN_SHARED = 8'h35,
+        SNP_FWD_CLEAN_INVALID = 8'h36,
+        SNP_FWD_MAKE_INVALID = 8'h37
     } snp_opcode_e;
 
     // =============================================================================
@@ -94,7 +103,7 @@ package coh_noc_pkg;
         logic         allow_retry; // Allow Retry
         logic         order;       // Ordering requirement
         logic [1:0]   pcrd_type;   // P-Credit Type
-        logic [15:0]  trace_tag;   // Trace Tag
+        logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [7:0]   reserved;    // Reserved bits
     } req_flit_t;
     
@@ -104,12 +113,12 @@ package coh_noc_pkg;
         logic [11:0]  txn_id;      // Transaction ID
         logic [7:0]   src_id;      // Source Node ID
         logic [7:0]   tgt_id;      // Target Node ID
+        logic [7:0]   dbid;        // Data Buffer ID
         logic [1:0]   resp;        // Response status
         logic [1:0]   fwd_state;   // Forward State
         logic [1:0]   data_pull;   // Data Pull
-        logic [2:0]   cb_id;       // Copy Back ID
         logic [1:0]   pcrd_type;   // P-Credit Type
-        logic [15:0]  trace_tag;   // Trace Tag
+        logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [31:0]  reserved;    // Reserved bits
     } rsp_flit_t;
     
@@ -129,7 +138,7 @@ package coh_noc_pkg;
         logic [63:0]  be;          // Byte Enable (64 bits for 512-bit data)
         logic [1:0]   data_check;  // Data Check
         logic [1:0]   poison;      // Poison
-        logic [15:0]  trace_tag;   // Trace Tag
+        logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [511:0] data;        // 512-bit Data Payload
         logic [63:0]  data_check_bits; // Data Check/ECC bits
         logic [15:0]  reserved;    // Reserved bits
@@ -145,7 +154,7 @@ package coh_noc_pkg;
         logic [7:0]   fwd_node_id; // Forward Node ID
         logic         do_not_goto_sd; // Do Not Go To SD
         logic         ret_to_src;  // Return to Source
-        logic [15:0]  trace_tag;   // Trace Tag
+        logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [15:0]  reserved;    // Reserved bits
     } snp_flit_t;
     

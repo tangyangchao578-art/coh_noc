@@ -37,7 +37,7 @@ function automatic req_flit_t pack_req_flit(
     flit.allow_retry  = allow_retry;
     flit.order        = order;
     flit.pcrd_type    = 2'b00;
-    flit.trace_tag    = 16'h0000;
+    flit.trace_tag    = 8'h00;
     flit.reserved     = 8'h00;
     return flit;
 endfunction
@@ -48,6 +48,7 @@ function automatic rsp_flit_t pack_rsp_flit(
     input logic [11:0] txn_id,
     input logic [7:0]  src_id,
     input logic [7:0]  tgt_id,
+    input logic [7:0]  dbid,
     input logic [1:0]  resp,
     input logic [1:0]  fwd_state
 );
@@ -56,12 +57,12 @@ function automatic rsp_flit_t pack_rsp_flit(
     flit.txn_id       = txn_id;
     flit.src_id       = src_id;
     flit.tgt_id       = tgt_id;
+    flit.dbid         = dbid;
     flit.resp         = resp;
     flit.fwd_state    = fwd_state;
     flit.data_pull    = 2'b00;
-    flit.cb_id        = 3'b000;
     flit.pcrd_type    = 2'b00;
-    flit.trace_tag    = 16'h0000;
+    flit.trace_tag    = 8'h00;
     flit.reserved     = 32'h00000000;
     return flit;
 endfunction
@@ -95,7 +96,7 @@ function automatic dat_flit_t pack_dat_flit(
     flit.ccid         = 2'b00;
     flit.data_check   = 2'b00;
     flit.poison       = 2'b00;
-    flit.trace_tag    = 16'h0000;
+    flit.trace_tag    = 8'h00;
     flit.data_check_bits = 64'h0000000000000000;
     flit.reserved     = 16'h0000;
     return flit;
@@ -119,7 +120,7 @@ function automatic snp_flit_t pack_snp_flit(
     flit.fwd_node_id  = fwd_node_id;
     flit.do_not_goto_sd = 1'b0;
     flit.ret_to_src   = 1'b0;
-    flit.trace_tag    = 16'h0000;
+    flit.trace_tag    = 8'h00;
     flit.reserved     = 16'h0000;
     return flit;
 endfunction
@@ -139,6 +140,17 @@ endfunction
 
 function automatic virtual_channel_e get_virtual_channel_from_snp(input snp_opcode_e opcode);
     return VC_SNP;
+endfunction
+
+// Function to check if SNP opcode is a forward snoop (for DCT)
+function automatic logic is_snp_forward(input snp_opcode_e opcode);
+    case (opcode)
+        SNP_FWD_SHARED, SNP_FWD_CLEAN, SNP_FWD_ONCE, SNP_FWD_NOT_SHARED_DIRTY,
+        SNP_FWD_UNIQUE, SNP_FWD_CLEAN_SHARED, SNP_FWD_CLEAN_INVALID, SNP_FWD_MAKE_INVALID:
+            return 1'b1;
+        default:
+            return 1'b0;
+    endcase
 endfunction
 
 // Function to check if REQ opcode carries data

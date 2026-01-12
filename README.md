@@ -31,8 +31,11 @@ The implementation follows the official AMBA CHI specification with separate fli
 
 #### RSP Channel (Response)  
 - **rsp_flit_t**: Contains response opcodes and completion status
-- **Key Fields**: opcode, txn_id, src_id, tgt_id, resp, fwd_state
-- **Special Fields**: data_pull, cb_id (copy-back ID), pcrd_type
+- **Key Fields**: opcode, txn_id, src_id, tgt_id, dbid, resp, fwd_state
+- **Special Fields**: 
+  - **DBID**: Data Buffer ID - 在响应中返回给请求者，用于标识数据缓冲区
+  - **data_pull**: 数据拉取控制信号
+  - **pcrd_type**: P-Credit类型
 
 #### DAT Channel (Data)
 - **dat_flit_t**: Contains data payload and data-specific metadata
@@ -48,7 +51,11 @@ The implementation follows the official AMBA CHI specification with separate fli
 #### SNP Channel (Snoop)
 - **snp_flit_t**: Contains snoop requests for cache coherency
 - **Key Fields**: opcode, addr[47:3], txn_id, src_id, fwd_txn_id
-- **Special Fields**: do_not_goto_sd, ret_to_src, fwd_node_id
+- **Special Fields**: 
+  - **Forward Snoop Types**: SnpFwdShared, SnpFwdUnique等，用于DCT (Direct Cache Transfer)
+  - **do_not_goto_sd**: 不要进入SD状态标志
+  - **ret_to_src**: 返回到源节点标志
+  - **fwd_node_id**: 转发节点ID，用于DCT流程
 
 ### CHI Operation Codes
 
@@ -67,8 +74,9 @@ The implementation follows the official AMBA CHI specification with separate fli
 - **Separated Data**: DataSepData
 
 #### Snoop Channel Opcodes
-- **Coherency**: SnpShared, SnpClean, SnpOnce, SnpUnique
+- **Standard Snoops**: SnpShared, SnpClean, SnpOnce, SnpUnique
 - **Invalidation**: SnpCleanInvalid, SnpMakeInvalid
+- **Forward Snoops (DCT)**: SnpFwdShared, SnpFwdUnique, SnpFwdClean等，用于Direct Cache Transfer优化
 
 ### Virtual Channels
 
@@ -80,12 +88,25 @@ The system supports four virtual channels as defined by CHI:
 
 ### CHI协议关键概念
 
+#### DCT (Direct Cache Transfer)
+DCT是CHI协议中的重要优化机制：
+- **目的**: 允许数据直接从一个RN-F的缓存传输到另一个RN-F，无需经过HN-F
+- **Forward Snoop**: 使用SnpFwd*系列操作码实现DCT
+- **性能优势**: 减少数据传输跳数，降低延迟
+- **应用场景**: 当HN-F检测到数据可以直接从持有者传输给请求者时
+
 #### DBID (Data Buffer ID)
 DBID是CHI协议中的重要概念，用于写事务的数据缓冲区管理：
 - **分配**: 由Home Node (HN-F)分配给Request Node (RN-F)
 - **用途**: 标识RN-F应该将写数据发送到HN-F的哪个数据缓冲区
 - **生命周期**: 在DBIDResp响应中发送给RN-F，RN-F在后续的写数据flit中使用
 - **宽度**: 8位，支持最多256个并发数据缓冲区
+- **RSP通道**: RSP响应中也包含DBID，用于确认和流控
+
+#### Trace Tag
+- **宽度**: 8位（修正后）
+- **用途**: 用于调试和性能分析的跟踪标签
+- **传播**: 在事务的所有flit中传播，便于跟踪完整的事务流
 
 #### 字节使能 (BE - Byte Enable)
 - **宽度**: 64位，对应512位数据的每个字节
@@ -97,7 +118,7 @@ DBID是CHI协议中的重要概念，用于写事务的数据缓冲区管理：
 - **宽度**: 3位，支持最多8个数据flit
 - **应用**: 大于64字节的数据传输需要多个flit
 
-- **Packet-Based Communication**: Each channel uses specific flit formats
+### Key Features
 - **Transaction ID Management**: 12-bit TxnID for transaction tracking
 - **Node ID Addressing**: 8-bit source and target node identification
 - **Quality of Service**: QoS support for traffic prioritization
