@@ -36,8 +36,14 @@ The implementation follows the official AMBA CHI specification with separate fli
 
 #### DAT Channel (Data)
 - **dat_flit_t**: Contains data payload and data-specific metadata
-- **Key Fields**: opcode, txn_id, data[511:0], data_id, resp
-- **Special Fields**: ccid (critical chunk ID), poison, data_check_bits
+- **Key Fields**: opcode, txn_id, data[511:0], dbid, be[63:0], data_id
+- **Special Fields**: 
+  - **DBID**: Data Buffer ID - 用于标识数据缓冲区，在写事务中由HN分配给RN
+  - **BE**: Byte Enable - 64位字节使能信号，指示512位数据中哪些字节有效
+  - **DataID**: 数据标识符 - 用于多flit数据传输中标识数据块顺序
+  - **CCID**: Critical Chunk ID - 关键数据块标识符
+  - **Poison**: 毒化位 - 指示数据是否被毒化（错误数据）
+  - **DataCheck**: 数据校验位 - 用于数据完整性检查
 
 #### SNP Channel (Snoop)
 - **snp_flit_t**: Contains snoop requests for cache coherency
@@ -72,7 +78,24 @@ The system supports four virtual channels as defined by CHI:
 - **VC_DAT (10)**: Data channel for payload transfer
 - **VC_SNP (11)**: Snoop channel for coherency operations
 
-### Key Features
+### CHI协议关键概念
+
+#### DBID (Data Buffer ID)
+DBID是CHI协议中的重要概念，用于写事务的数据缓冲区管理：
+- **分配**: 由Home Node (HN-F)分配给Request Node (RN-F)
+- **用途**: 标识RN-F应该将写数据发送到HN-F的哪个数据缓冲区
+- **生命周期**: 在DBIDResp响应中发送给RN-F，RN-F在后续的写数据flit中使用
+- **宽度**: 8位，支持最多256个并发数据缓冲区
+
+#### 字节使能 (BE - Byte Enable)
+- **宽度**: 64位，对应512位数据的每个字节
+- **功能**: 指示数据flit中哪些字节包含有效数据
+- **用途**: 支持部分写操作和非对齐访问
+
+#### 数据ID (DataID)
+- **用途**: 在多flit数据传输中标识数据块的顺序
+- **宽度**: 3位，支持最多8个数据flit
+- **应用**: 大于64字节的数据传输需要多个flit
 
 - **Packet-Based Communication**: Each channel uses specific flit formats
 - **Transaction ID Management**: 12-bit TxnID for transaction tracking
