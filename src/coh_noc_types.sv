@@ -72,7 +72,10 @@ function automatic dat_flit_t pack_dat_flit(
     input logic [11:0] txn_id,
     input logic [7:0]  src_id,
     input logic [7:0]  tgt_id,
+    input logic [7:0]  home_node_id,
+    input logic [7:0]  dbid,
     input logic [511:0] data,
+    input logic [63:0] be,
     input logic [2:0]  data_id,
     input logic [1:0]  resp
 );
@@ -81,17 +84,20 @@ function automatic dat_flit_t pack_dat_flit(
     flit.txn_id       = txn_id;
     flit.src_id       = src_id;
     flit.tgt_id       = tgt_id;
+    flit.home_node_id = home_node_id;
+    flit.dbid         = dbid;
     flit.data         = data;
+    flit.be           = be;
     flit.data_id      = data_id;
     flit.resp         = resp;
-    flit.home_node_id = 2'b00;
     flit.fwd_state    = 2'b00;
-    flit.cb_id        = 3'b000;
+    flit.data_pull    = 2'b00;
     flit.ccid         = 2'b00;
     flit.data_check   = 2'b00;
     flit.poison       = 2'b00;
     flit.trace_tag    = 16'h0000;
     flit.data_check_bits = 64'h0000000000000000;
+    flit.reserved     = 16'h0000;
     return flit;
 endfunction
 
