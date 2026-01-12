@@ -4,7 +4,9 @@
 
 import coh_noc_pkg::*;
 
-interface xp_port_if;
+interface xp_port_if #(
+    parameter CHANNEL_TYPE = "REQ"  // "REQ", "RSP", "DAT", "SNP"
+);
     
     // =============================================================================
     // Flit Transmission Signals
@@ -12,8 +14,8 @@ interface xp_port_if;
     
     logic        valid;        // Valid flit present
     logic        ready;        // Ready to accept flit
-    flit_t       flit;         // Flit data
-    logic [3:0]  vc_id;        // Virtual Channel ID
+    flit_u       flit;         // Flit data (union of all channel types)
+    logic [1:0]  vc_id;        // Virtual Channel ID
     
     // =============================================================================
     // Flow Control Signals
@@ -21,6 +23,12 @@ interface xp_port_if;
     
     logic [CREDIT_COUNT_WIDTH-1:0] credit_count;   // Available credits
     logic                          credit_return;  // Credit return signal
+    
+    // =============================================================================
+    // Channel Type Identification
+    // =============================================================================
+    
+    logic [1:0] channel_type;  // 00=REQ, 01=RSP, 10=DAT, 11=SNP
     
     // =============================================================================
     // Modports for Master and Slave
@@ -31,6 +39,7 @@ interface xp_port_if;
         input  ready,
         output flit,
         output vc_id,
+        output channel_type,
         input  credit_count,
         output credit_return
     );
@@ -40,6 +49,7 @@ interface xp_port_if;
         output ready,
         input  flit,
         input  vc_id,
+        input  channel_type,
         output credit_count,
         input  credit_return
     );
