@@ -119,17 +119,20 @@ package coh_noc_pkg;
         logic [11:0]  txn_id;      // Transaction ID
         logic [7:0]   src_id;      // Source Node ID
         logic [7:0]   tgt_id;      // Target Node ID
-        logic [1:0]   home_node_id; // Home Node ID
+        logic [7:0]   home_node_id; // Home Node ID
+        logic [7:0]   dbid;        // Data Buffer ID
         logic [1:0]   resp;        // Response status
         logic [1:0]   fwd_state;   // Forward State
-        logic [2:0]   cb_id;       // Copy Back ID
-        logic [2:0]   data_id;     // Data ID
+        logic [1:0]   data_pull;   // Data Pull
+        logic [2:0]   data_id;     // Data ID (for multi-flit data)
         logic [1:0]   ccid;        // Critical Chunk ID
+        logic [63:0]  be;          // Byte Enable (64 bits for 512-bit data)
         logic [1:0]   data_check;  // Data Check
         logic [1:0]   poison;      // Poison
         logic [15:0]  trace_tag;   // Trace Tag
         logic [511:0] data;        // 512-bit Data Payload
-        logic [63:0]  data_check_bits; // Data Check bits
+        logic [63:0]  data_check_bits; // Data Check/ECC bits
+        logic [15:0]  reserved;    // Reserved bits
     } dat_flit_t;
     
     // SNP Channel Flit Structure
