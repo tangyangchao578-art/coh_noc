@@ -105,6 +105,7 @@ package coh_noc_pkg;
         logic [1:0]   pcrd_type;   // P-Credit Type
         logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [7:0]   reserved;    // Reserved bits
+        logic [614:0] padding;     // Padding to match dat_flit_t size (731 bits)
     } req_flit_t;
     
     // RSP Channel Flit Structure  
@@ -120,6 +121,7 @@ package coh_noc_pkg;
         logic [1:0]   pcrd_type;   // P-Credit Type
         logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [31:0]  reserved;    // Reserved bits
+        logic [638:0] padding;     // Padding to match dat_flit_t size (731 bits)
     } rsp_flit_t;
     
     // DAT Channel Flit Structure
@@ -156,6 +158,7 @@ package coh_noc_pkg;
         logic         ret_to_src;  // Return to Source
         logic [7:0]   trace_tag;   // Trace Tag (8-bit)
         logic [15:0]  reserved;    // Reserved bits
+        logic [615:0] padding;     // Padding to match dat_flit_t size (731 bits)
     } snp_flit_t;
     
     // Generic Flit Union for easier handling
