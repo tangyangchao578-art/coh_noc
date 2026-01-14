@@ -15,3 +15,10 @@ src/interfaces/xp_port_if.sv
 src/interfaces/cpu_if.sv
 src/interfaces/axi_if.sv
 src/interfaces/ddr_if.sv
+
+# Core modules
+src/vc_buffer.sv
+src/vc_buffer_manager.sv
+src/credit_flow_control.sv
+src/xp_router_compute.sv
+src/xp_router.sv
