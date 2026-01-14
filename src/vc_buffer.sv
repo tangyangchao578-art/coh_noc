@@ -30,10 +30,17 @@ module vc_buffer #(
 );
 
     // =============================================================================
-    // FIFO Storage
+    // FIFO Storage - Initialize to avoid X/Z values
     // =============================================================================
     
     flit_u buffer_mem [0:BUFFER_DEPTH-1];
+    
+    // Initialize memory to zeros
+    initial begin
+        for (int i = 0; i < BUFFER_DEPTH; i++) begin
+            buffer_mem[i] = '0;
+        end
+    end
     
     // =============================================================================
     // Pointers and Counters
@@ -64,23 +71,31 @@ module vc_buffer #(
         end else begin
             if (wr_en && !full) begin
                 buffer_mem[wr_ptr] <= wr_data;
-                wr_ptr <= (wr_ptr + 1) % BUFFER_DEPTH;
+                if (wr_ptr == BUFFER_DEPTH - 1)
+                    wr_ptr <= '0;
+                else
+                    wr_ptr <= wr_ptr + 1;
             end
         end
     end
     
     // =============================================================================
-    // Read Logic
+    // Read Logic - Combinational read with sequential pointer
     // =============================================================================
     
+    // Combinational read from current pointer location
+    assign rd_data = buffer_mem[rd_ptr];
+    
+    // Sequential pointer update
     always_ff @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             rd_ptr <= '0;
-            rd_data <= '0;
         end else begin
             if (rd_en && !empty) begin
-                rd_data <= buffer_mem[rd_ptr];
-                rd_ptr <= (rd_ptr + 1) % BUFFER_DEPTH;
+                if (rd_ptr == BUFFER_DEPTH - 1)
+                    rd_ptr <= '0;
+                else
+                    rd_ptr <= rd_ptr + 1;
             end
         end
     end

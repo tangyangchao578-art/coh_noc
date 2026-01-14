@@ -22,3 +22,4 @@ src/vc_buffer_manager.sv
 src/credit_flow_control.sv
 src/xp_router_compute.sv
 src/xp_router.sv
+src/mesh_2d_network.sv
