@@ -209,3 +209,220 @@ function automatic coord_t get_next_hop(
     
     return next_hop;
 endfunction
+
+// =============================================================================
+// Directory State Management Functions (Requirements 7.1, 7.2, 4.4)
+// =============================================================================
+
+// Function to initialize a directory entry
+function automatic directory_entry_t init_directory_entry();
+    directory_entry_t entry;
+    entry.state = DIR_INVALID;
+    entry.sharer_mask = 16'h0000;
+    entry.owner_id = 8'h00;
+    entry.dirty = 1'b0;
+    return entry;
+endfunction
+
+// Function to add a sharer to directory entry
+function automatic directory_entry_t add_sharer(
+    input directory_entry_t entry,
+    input logic [7:0] node_id
+);
+    directory_entry_t new_entry;
+    logic [15:0] node_mask;
+    
+    new_entry = entry;
+    
+    // Add node to sharer mask using bit manipulation
+    if (node_id < 16) begin
+        node_mask = 16'h0001 << node_id;
+        new_entry.sharer_mask = new_entry.sharer_mask | node_mask;
+    end
+    
+    // Update state based on number of sharers
+    if (new_entry.state == DIR_INVALID) begin
+        new_entry.state = DIR_EXCLUSIVE;
+        new_entry.owner_id = node_id;
+    end else if (new_entry.state == DIR_EXCLUSIVE) begin
+        new_entry.state = DIR_SHARED;
+    end
+    
+    return new_entry;
+endfunction
+
+// Function to remove a sharer from directory entry
+function automatic directory_entry_t remove_sharer(
+    input directory_entry_t entry,
+    input logic [7:0] node_id
+);
+    directory_entry_t new_entry;
+    logic [15:0] node_mask;
+    int sharer_count;
+    
+    new_entry = entry;
+    
+    // Remove node from sharer mask using bit manipulation
+    if (node_id < 16) begin
+        node_mask = 16'h0001 << node_id;
+        new_entry.sharer_mask = new_entry.sharer_mask & ~node_mask;
+    end
+    
+    // Count remaining sharers
+    sharer_count = 0;
+    for (int i = 0; i < 16; i++) begin
+        if ((new_entry.sharer_mask >> i) & 1'b1) sharer_count++;
+    end
+    
+    // Update state based on remaining sharers
+    if (sharer_count == 0) begin
+        new_entry.state = DIR_INVALID;
+        new_entry.owner_id = 8'h00;
+        new_entry.dirty = 1'b0;
+    end else if (sharer_count == 1) begin
+        new_entry.state = DIR_EXCLUSIVE;
+        // Find the remaining sharer
+        for (int i = 0; i < 16; i++) begin
+            if ((new_entry.sharer_mask >> i) & 1'b1) begin
+                new_entry.owner_id = i;
+                i = 16; // Exit loop
+            end
+        end
+    end
+    
+    return new_entry;
+endfunction
+
+// Function to transition directory state on write
+function automatic directory_entry_t directory_write_transition(
+    input directory_entry_t entry,
+    input logic [7:0] writer_id
+);
+    directory_entry_t new_entry;
+    logic [15:0] writer_mask;
+    
+    new_entry = entry;
+    
+    // Clear all sharers except writer using bit manipulation
+    if (writer_id < 16) begin
+        writer_mask = 16'h0001 << writer_id;
+        new_entry.sharer_mask = writer_mask;
+    end else begin
+        new_entry.sharer_mask = 16'h0000;
+    end
+    
+    // Transition to Modified state
+    new_entry.state = DIR_MODIFIED;
+    new_entry.owner_id = writer_id;
+    new_entry.dirty = 1'b1;
+    
+    return new_entry;
+endfunction
+
+// Function to transition directory state on read
+function automatic directory_entry_t directory_read_transition(
+    input directory_entry_t entry,
+    input logic [7:0] reader_id
+);
+    directory_entry_t new_entry;
+    logic [15:0] reader_mask;
+    
+    new_entry = entry;
+    
+    // Add reader to sharers using bit manipulation
+    if (reader_id < 16) begin
+        reader_mask = 16'h0001 << reader_id;
+        new_entry.sharer_mask = new_entry.sharer_mask | reader_mask;
+    end
+    
+    // Update state based on current state
+    case (entry.state)
+        DIR_INVALID: begin
+            new_entry.state = DIR_EXCLUSIVE;
+            new_entry.owner_id = reader_id;
+        end
+        DIR_EXCLUSIVE: begin
+            new_entry.state = DIR_SHARED;
+        end
+        DIR_MODIFIED: begin
+            // Modified data needs to be written back
+            new_entry.state = DIR_SHARED;
+            new_entry.dirty = 1'b0;
+        end
+        DIR_SHARED: begin
+            // Already shared, just add reader
+            new_entry.state = DIR_SHARED;
+        end
+    endcase
+    
+    return new_entry;
+endfunction
+
+// Function to invalidate all sharers
+function automatic directory_entry_t invalidate_all_sharers(
+    input directory_entry_t entry
+);
+    directory_entry_t new_entry;
+    
+    new_entry = entry;
+    new_entry.state = DIR_INVALID;
+    new_entry.sharer_mask = 16'h0000;
+    new_entry.owner_id = 8'h00;
+    new_entry.dirty = 1'b0;
+    
+    return new_entry;
+endfunction
+
+// Function to check if a node is a sharer
+function automatic logic is_sharer(
+    input directory_entry_t entry,
+    input logic [7:0] node_id
+);
+    logic [15:0] node_mask;
+    
+    if (node_id < 16) begin
+        node_mask = 16'h0001 << node_id;
+        return ((entry.sharer_mask & node_mask) != 16'h0000);
+    end else begin
+        return 1'b0;
+    end
+endfunction
+
+// Function to get number of sharers
+function automatic int get_sharer_count(
+    input directory_entry_t entry
+);
+    int count;
+    count = 0;
+    for (int i = 0; i < 16; i++) begin
+        if ((entry.sharer_mask >> i) & 1'b1) count++;
+    end
+    return count;
+endfunction
+
+// Function to check if directory entry is valid
+function automatic logic is_directory_valid(
+    input directory_entry_t entry
+);
+    return (entry.state != DIR_INVALID);
+endfunction
+
+// Function to check if directory entry is dirty
+function automatic logic is_directory_dirty(
+    input directory_entry_t entry
+);
+    return entry.dirty;
+endfunction
+
+// Helper function to convert directory state to string
+function automatic string directory_state_to_string(
+    input directory_state_e state
+);
+    case (state)
+        DIR_INVALID:   return "DIR_INVALID";
+        DIR_SHARED:    return "DIR_SHARED";
+        DIR_EXCLUSIVE: return "DIR_EXCLUSIVE";
+        DIR_MODIFIED:  return "DIR_MODIFIED";
+        default:       return "UNKNOWN";
+    endcase
+endfunction
