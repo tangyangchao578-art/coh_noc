@@ -186,3 +186,35 @@ else
 	@echo "Unsupported simulator: $(SIM)"
 	@exit 1
 endif
+
+# Test SLC Cache Properties
+test_slc: tb_slc_properties.sv $(SOURCES) $(SRC_DIR)/slc_cache.sv
+	@echo "==================================================================="
+	@echo "Running Property Test: System Level Cache Functionality"
+	@echo "==================================================================="
+ifeq ($(SIM),iverilog)
+	iverilog -g2012 -o test_slc.vvp $(SOURCES) $(SRC_DIR)/slc_cache.sv tb_slc_properties.sv
+	vvp test_slc.vvp
+else ifeq ($(SIM),vcs)
+	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) $(SRC_DIR)/slc_cache.sv tb_slc_properties.sv -o simv_slc
+	./simv_slc
+else
+	@echo "Unsupported simulator: $(SIM)"
+	@exit 1
+endif
+
+# Test MESI State Machine Properties
+test_mesi: tb_mesi_properties.sv $(SOURCES) $(SRC_DIR)/mesi_state_machine.sv
+	@echo "==================================================================="
+	@echo "Running Property Test: MESI State Machine Correctness"
+	@echo "==================================================================="
+ifeq ($(SIM),iverilog)
+	iverilog -g2012 -o test_mesi.vvp $(SOURCES) $(SRC_DIR)/mesi_state_machine.sv tb_mesi_properties.sv
+	vvp test_mesi.vvp
+else ifeq ($(SIM),vcs)
+	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) $(SRC_DIR)/mesi_state_machine.sv tb_mesi_properties.sv -o simv_mesi
+	./simv_mesi
+else
+	@echo "Unsupported simulator: $(SIM)"
+	@exit 1
+endif

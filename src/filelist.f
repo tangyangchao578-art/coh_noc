@@ -23,3 +23,7 @@ src/credit_flow_control.sv
 src/xp_router_compute.sv
 src/xp_router.sv
 src/mesh_2d_network.sv
+src/slc_cache.sv
+src/directory_manager.sv
+src/mesi_state_machine.sv
+src/snoop_filter.sv
