@@ -234,3 +234,21 @@ else
 	@echo "Unsupported simulator: $(SIM)"
 	@exit 1
 endif
+
+# Test HN-F Integration
+test_hn_f_integration: tb_hn_f_integration.sv $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/axi_if.sv $(SRC_DIR)/slc_cache.sv $(SRC_DIR)/directory_manager.sv $(SRC_DIR)/mesi_state_machine.sv $(SRC_DIR)/snoop_filter.sv $(SRC_DIR)/hn_f.sv
+	@echo "==================================================================="
+	@echo "Running Integration Test: HN-F Complete Coherency Flow"
+	@echo "Task: 8.2 编写 HN-F 集成测试"
+	@echo "Requirements: 4.1, 4.2, 4.3, 4.4"
+	@echo "==================================================================="
+ifeq ($(SIM),iverilog)
+	iverilog -g2012 -o test_hn_f_integration.vvp $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/axi_if.sv $(SRC_DIR)/slc_cache.sv $(SRC_DIR)/directory_manager.sv $(SRC_DIR)/mesi_state_machine.sv $(SRC_DIR)/snoop_filter.sv $(SRC_DIR)/hn_f.sv tb_hn_f_integration.sv
+	vvp test_hn_f_integration.vvp
+else ifeq ($(SIM),vcs)
+	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/axi_if.sv $(SRC_DIR)/slc_cache.sv $(SRC_DIR)/directory_manager.sv $(SRC_DIR)/mesi_state_machine.sv $(SRC_DIR)/snoop_filter.sv $(SRC_DIR)/hn_f.sv tb_hn_f_integration.sv -o simv_hn_f_integration
+	./simv_hn_f_integration
+else
+	@echo "Unsupported simulator: $(SIM)"
+	@exit 1
+endif

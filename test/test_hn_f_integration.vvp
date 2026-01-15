@@ -1,0 +1,1505 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision - 12;
+:vpi_module "d:\iverilog\lib\ivl\system.vpi";
+:vpi_module "d:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "d:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "d:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "d:\iverilog\lib\ivl\va_math.vpi";
+:vpi_module "d:\iverilog\lib\ivl\v2009.vpi";
+S_000001a1000a2190 .scope package, "$unit" "$unit" 2 1;
+ .timescale 0 0;
+S_000001a1000a6d20 .scope module, "tb_hn_f_integration" "tb_hn_f_integration" 3 9;
+ .timescale -9 -12;
+P_000001a10009df90 .param/l "ADDR_WIDTH" 0 3 19, +C4<00000000000000000000000000110000>;
+P_000001a10009dfc8 .param/l "CACHE_SIZE" 0 3 15, +C4<00000000000000010000000000000000>;
+P_000001a10009e000 .param/l "DIRECTORY_ENTRIES" 0 3 17, +C4<00000000000000000000000100000000>;
+P_000001a10009e038 .param/l "FILTER_ENTRIES" 0 3 18, +C4<00000000000000000000000010000000>;
+P_000001a10009e070 .param/l "HN_F_NODE_ID" 0 3 22, C4<00010000>;
+P_000001a10009e0a8 .param/l "MAX_NODES" 0 3 21, +C4<00000000000000000000000000010000>;
+P_000001a10009e0e0 .param/l "NODE_ID_WIDTH" 0 3 20, +C4<00000000000000000000000000001000>;
+P_000001a10009e118 .param/l "NUM_WAYS" 0 3 16, +C4<00000000000000000000000000000100>;
+v000001a1000f2b10_0 .var "broadcast_mode", 0 0;
+v000001a1000f2bb0_0 .var "broadcast_snoops", 31 0;
+v000001a1000f2390_0 .var "clk", 0 0;
+v000001a1000f3f10_0 .var "dat_ready", 0 0;
+v000001a1000f24d0_0 .var "dat_valid", 0 0;
+v000001a1000f2a70_0 .var "error_code", 7 0;
+v000001a1000f38d0_0 .var/2s "fail_count", 31 0;
+v000001a1000f3a10_0 .var "filter_enable", 0 0;
+v000001a1000f2110_0 .var "filter_threshold", 3 0;
+v000001a1000f2930_0 .var "filtered_snoops", 31 0;
+v000001a1000f33d0_0 .var "mem_arready", 0 0;
+v000001a1000f3010_0 .var "mem_arvalid", 0 0;
+v000001a1000f22f0_0 .var "mem_awready", 0 0;
+v000001a1000f2cf0_0 .var "mem_awvalid", 0 0;
+v000001a1000f3650_0 .var "mem_bready", 0 0;
+v000001a1000f2d90_0 .var "mem_bvalid", 0 0;
+v000001a1000f30b0_0 .var "mem_rready", 0 0;
+v000001a1000f2570_0 .var "mem_rvalid", 0 0;
+v000001a1000f3510_0 .var "mem_wready", 0 0;
+v000001a1000f3790_0 .var "mem_wvalid", 0 0;
+v000001a1000f3ab0_0 .var/2s "pass_count", 31 0;
+v000001a1000f3c90_0 .var "protocol_error", 0 0;
+v000001a1000f2610_0 .var "req_ready", 0 0;
+v000001a1000f26b0_0 .var "req_valid", 0 0;
+v000001a1000f2750_0 .var "rsp_ready", 0 0;
+v000001a1000f3d30_0 .var "rsp_valid", 0 0;
+v000001a1000f3dd0_0 .var "rst_n", 0 0;
+v000001a1000f21b0_0 .var "snp_ready", 0 0;
+v000001a1000f27f0_0 .var "snp_valid", 0 0;
+v000001a1000f2890_0 .var "test_addr", 47 0;
+v000001a1000f9c20_0 .var/2s "test_count", 31 0;
+v000001a1000f92c0_0 .var "test_data", 511 0;
+v000001a1000f94a0_0 .var/str "test_name";
+v000001a1000f97c0_0 .var "test_passed", 0 0;
+v000001a1000f8b40_0 .var "test_src_id", 7 0;
+v000001a1000f9220_0 .var "test_txn_id", 11 0;
+v000001a1000f8d20_0 .var "total_snoops", 31 0;
+S_000001a1000c96e0 .scope autofunction.vec4.s48, "generate_cache_line_address" "generate_cache_line_address" 3 491, 3 491 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7130_0 .var "addr", 47 0;
+; Variable generate_cache_line_address is vec4 return value of scope S_000001a1000c96e0
+TD_tb_hn_f_integration.generate_cache_line_address ;
+    %vpi_func 3 493 "$urandom" 32 {0 0 0};
+    %vpi_func 3 493 "$urandom" 32 {0 0 0};
+    %concat/vec4; draw_concat_vec4
+    %pad/u 48;
+    %store/vec4 v000001a1000a7130_0, 0, 48;
+    %pushi/vec4 0, 0, 6;
+    %ix/load 4, 0, 0;
+    %flag_set/imm 4, 0;
+    %store/vec4 v000001a1000a7130_0, 4, 6;
+    %load/vec4 v000001a1000a7130_0;
+    %ret/vec4 0, 0, 48;  Assign to generate_cache_line_address (store_vec4_to_lval)
+    %disable/flow S_000001a1000c96e0;
+    %end;
+S_000001a10009cbd0 .scope autofunction.vec4.s512, "generate_test_data" "generate_test_data" 3 498, 3 498 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7450_0 .var "data", 511 0;
+; Variable generate_test_data is vec4 return value of scope S_000001a10009cbd0
+TD_tb_hn_f_integration.generate_test_data ;
+    %fork t_1, S_000001a1000a1120;
+    %jmp t_0;
+    .scope S_000001a1000a1120;
+t_1 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000a7770_0, 0, 32;
+T_1.0 ;
+    %load/vec4 v000001a1000a7770_0;
+    %cmpi/s 16, 0, 32;
+    %jmp/0xz T_1.1, 5;
+    %vpi_func 3 501 "$urandom" 32 {0 0 0};
+    %load/vec4 v000001a1000a7770_0;
+    %muli 32, 0, 32;
+    %ix/vec4/s 4;
+    %store/vec4 v000001a1000a7450_0, 4, 32;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000a7770_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000a7770_0, 0, 32;
+    %jmp T_1.0;
+T_1.1 ;
+    %end;
+    .scope S_000001a10009cbd0;
+t_0 %join;
+    %load/vec4 v000001a1000a7450_0;
+    %ret/vec4 0, 0, 512;  Assign to generate_test_data (store_vec4_to_lval)
+    %disable/flow S_000001a10009cbd0;
+    %end;
+S_000001a1000a1120 .scope autobegin, "$ivl_for_loop7" "$ivl_for_loop7" 3 500, 3 500 0, S_000001a10009cbd0;
+ .timescale -9 -12;
+v000001a1000a7770_0 .var/2s "i", 31 0;
+S_000001a1000bfec0 .scope task, "initialize_test_environment" "initialize_test_environment" 3 336, 3 336 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+E_000001a1000c19d0 .event posedge, v000001a1000f2390_0;
+TD_tb_hn_f_integration.initialize_test_environment ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f2610_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3d30_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f2750_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f24d0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3f10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f27f0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f21b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3010_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f33d0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f2570_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f30b0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f2cf0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f22f0_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3790_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3510_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f2d90_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3650_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3a10_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f2b10_0, 0, 1;
+    %pushi/vec4 4, 0, 4;
+    %store/vec4 v000001a1000f2110_0, 0, 4;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f8d20_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f2930_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f2bb0_0, 0, 32;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3c90_0, 0, 1;
+    %pushi/vec4 0, 0, 8;
+    %store/vec4 v000001a1000f2a70_0, 0, 8;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3dd0_0, 0, 1;
+    %pushi/vec4 10, 0, 32;
+T_2.2 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_2.3, 5;
+    %jmp/1 T_2.3, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_2.2;
+T_2.3 ;
+    %pop/vec4 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3dd0_0, 0, 1;
+    %pushi/vec4 5, 0, 32;
+T_2.4 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_2.5, 5;
+    %jmp/1 T_2.5, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_2.4;
+T_2.5 ;
+    %pop/vec4 1;
+    %vpi_call/w 3 377 "$display", "Test environment initialized" {0 0 0};
+    %end;
+S_000001a1000b52a0 .scope task, "print_test_summary" "print_test_summary" 3 506, 3 506 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+TD_tb_hn_f_integration.print_test_summary ;
+    %vpi_call/w 3 507 "$display", "\012=============================================================================" {0 0 0};
+    %vpi_call/w 3 508 "$display", "HN-F Integration Test Summary" {0 0 0};
+    %vpi_call/w 3 509 "$display", "=============================================================================" {0 0 0};
+    %vpi_call/w 3 510 "$display", "Total Tests: %0d", v000001a1000f9c20_0 {0 0 0};
+    %vpi_call/w 3 511 "$display", "Passed:      %0d", v000001a1000f3ab0_0 {0 0 0};
+    %vpi_call/w 3 512 "$display", "Failed:      %0d", v000001a1000f38d0_0 {0 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cvt/rv/s;
+    %pushi/real 1677721600, 4072; load=100.000
+    %mul/wr;
+    %load/vec4 v000001a1000f9c20_0;
+    %cvt/rv/s;
+    %div/wr;
+    %vpi_call/w 3 513 "$display", "Success Rate: %.1f%%", W<0,r> {0 1 0};
+    %vpi_call/w 3 514 "$display", "=============================================================================" {0 0 0};
+    %vpi_call/w 3 516 "$display", "\012Component Integration Status:" {0 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmpi/s 0, 0, 32;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.6, 8;
+    %pushi/vec4 1464816203, 0, 32; draw_string_vec4
+    %pushi/vec4 4804167, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.7, 8;
+T_3.6 ; End of true expr.
+    %pushi/vec4 4604233, 0, 32; draw_string_vec4
+    %pushi/vec4 4998468, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.7, 8;
+ ; End of false expr.
+    %blend;
+T_3.7;
+    %vpi_call/w 3 517 "$display", "- SLC Cache Integration:     %s", S<0,vec4,u56> {1 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmpi/s 0, 0, 32;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.8, 8;
+    %pushi/vec4 1464816203, 0, 32; draw_string_vec4
+    %pushi/vec4 4804167, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.9, 8;
+T_3.8 ; End of true expr.
+    %pushi/vec4 4604233, 0, 32; draw_string_vec4
+    %pushi/vec4 4998468, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.9, 8;
+ ; End of false expr.
+    %blend;
+T_3.9;
+    %vpi_call/w 3 518 "$display", "- Directory Manager:         %s", S<0,vec4,u56> {1 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmpi/s 0, 0, 32;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.10, 8;
+    %pushi/vec4 1464816203, 0, 32; draw_string_vec4
+    %pushi/vec4 4804167, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.11, 8;
+T_3.10 ; End of true expr.
+    %pushi/vec4 4604233, 0, 32; draw_string_vec4
+    %pushi/vec4 4998468, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.11, 8;
+ ; End of false expr.
+    %blend;
+T_3.11;
+    %vpi_call/w 3 519 "$display", "- Snoop Filter:              %s", S<0,vec4,u56> {1 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmpi/s 0, 0, 32;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.12, 8;
+    %pushi/vec4 1464816203, 0, 32; draw_string_vec4
+    %pushi/vec4 4804167, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.13, 8;
+T_3.12 ; End of true expr.
+    %pushi/vec4 4604233, 0, 32; draw_string_vec4
+    %pushi/vec4 4998468, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.13, 8;
+ ; End of false expr.
+    %blend;
+T_3.13;
+    %vpi_call/w 3 520 "$display", "- MESI State Machine:        %s", S<0,vec4,u56> {1 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmpi/s 0, 0, 32;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.14, 8;
+    %pushi/vec4 1464816203, 0, 32; draw_string_vec4
+    %pushi/vec4 4804167, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.15, 8;
+T_3.14 ; End of true expr.
+    %pushi/vec4 4604233, 0, 32; draw_string_vec4
+    %pushi/vec4 4998468, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.15, 8;
+ ; End of false expr.
+    %blend;
+T_3.15;
+    %vpi_call/w 3 521 "$display", "- Memory Interface:          %s", S<0,vec4,u56> {1 0 0};
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmpi/s 0, 0, 32;
+    %flag_or 5, 4; GT is !LE
+    %flag_inv 5;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.16, 8;
+    %pushi/vec4 1464816203, 0, 32; draw_string_vec4
+    %pushi/vec4 4804167, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.17, 8;
+T_3.16 ; End of true expr.
+    %pushi/vec4 4604233, 0, 32; draw_string_vec4
+    %pushi/vec4 4998468, 0, 24; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.17, 8;
+ ; End of false expr.
+    %blend;
+T_3.17;
+    %vpi_call/w 3 522 "$display", "- Network Interface:         %s", S<0,vec4,u56> {1 0 0};
+    %vpi_call/w 3 524 "$display", "\012Final Statistics:" {0 0 0};
+    %vpi_call/w 3 525 "$display", "- Total Snoops:     %0d", v000001a1000f8d20_0 {0 0 0};
+    %vpi_call/w 3 526 "$display", "- Filtered Snoops:  %0d", v000001a1000f2930_0 {0 0 0};
+    %vpi_call/w 3 527 "$display", "- Broadcast Snoops: %0d", v000001a1000f2bb0_0 {0 0 0};
+    %load/vec4 v000001a1000f3c90_0;
+    %flag_set/vec4 8;
+    %jmp/0 T_3.18, 8;
+    %pushi/vec4 5850451, 0, 24; draw_string_vec4
+    %jmp/1 T_3.19, 8;
+T_3.18 ; End of true expr.
+    %pushi/vec4 20047, 0, 24; draw_string_vec4
+    %jmp/0 T_3.19, 8;
+ ; End of false expr.
+    %blend;
+T_3.19;
+    %vpi_call/w 3 528 "$display", "- Protocol Errors:  %s", S<0,vec4,u24> {1 0 0};
+    %vpi_call/w 3 530 "$display", "\012=============================================================================" {0 0 0};
+    %vpi_call/w 3 531 "$display", "Integration Test Validation Summary:" {0 0 0};
+    %vpi_call/w 3 532 "$display", "=============================================================================" {0 0 0};
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 2, 0, 32;
+    %div/s;
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmp/s;
+    %flag_or 5, 4;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.20, 8;
+    %pushi/vec4 86, 0, 32; draw_string_vec4
+    %pushi/vec4 1095518532, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1096041796, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.21, 8;
+T_3.20 ; End of true expr.
+    %pushi/vec4 1313162564, 0, 32; draw_string_vec4
+    %pushi/vec4 1394627141, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1447642455, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.21, 8;
+ ; End of false expr.
+    %blend;
+T_3.21;
+    %vpi_call/w 3 533 "$display", "Requirements 4.1: HN-F Point of Coherency - %s", S<0,vec4,u96> {1 0 0};
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 2, 0, 32;
+    %div/s;
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmp/s;
+    %flag_or 5, 4;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.22, 8;
+    %pushi/vec4 86, 0, 32; draw_string_vec4
+    %pushi/vec4 1095518532, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1096041796, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.23, 8;
+T_3.22 ; End of true expr.
+    %pushi/vec4 1313162564, 0, 32; draw_string_vec4
+    %pushi/vec4 1394627141, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1447642455, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.23, 8;
+ ; End of false expr.
+    %blend;
+T_3.23;
+    %vpi_call/w 3 535 "$display", "Requirements 4.2: System Level Cache (SLC) - %s", S<0,vec4,u96> {1 0 0};
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 2, 0, 32;
+    %div/s;
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmp/s;
+    %flag_or 5, 4;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.24, 8;
+    %pushi/vec4 86, 0, 32; draw_string_vec4
+    %pushi/vec4 1095518532, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1096041796, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.25, 8;
+T_3.24 ; End of true expr.
+    %pushi/vec4 1313162564, 0, 32; draw_string_vec4
+    %pushi/vec4 1394627141, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1447642455, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.25, 8;
+ ; End of false expr.
+    %blend;
+T_3.25;
+    %vpi_call/w 3 537 "$display", "Requirements 4.3: Snoop Filter Functionality - %s", S<0,vec4,u96> {1 0 0};
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 2, 0, 32;
+    %div/s;
+    %load/vec4 v000001a1000f3ab0_0;
+    %cmp/s;
+    %flag_or 5, 4;
+    %flag_mov 8, 5;
+    %jmp/0 T_3.26, 8;
+    %pushi/vec4 86, 0, 32; draw_string_vec4
+    %pushi/vec4 1095518532, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1096041796, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/1 T_3.27, 8;
+T_3.26 ; End of true expr.
+    %pushi/vec4 1313162564, 0, 32; draw_string_vec4
+    %pushi/vec4 1394627141, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %pushi/vec4 1447642455, 0, 32; draw_string_vec4
+    %concat/vec4; draw_string_vec4
+    %jmp/0 T_3.27, 8;
+ ; End of false expr.
+    %blend;
+T_3.27;
+    %vpi_call/w 3 539 "$display", "Requirements 4.4: Directory State Management - %s", S<0,vec4,u96> {1 0 0};
+    %vpi_call/w 3 541 "$display", "=============================================================================" {0 0 0};
+    %end;
+S_000001a1000b1260 .scope task, "simulate_coherency_conflict" "simulate_coherency_conflict" 3 403, 3 403 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7950_0 .var "addr", 47 0;
+v000001a1000a7db0_0 .var "src_id", 7 0;
+v000001a1000a71d0_0 .var "txn_id", 11 0;
+TD_tb_hn_f_integration.simulate_coherency_conflict ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 5, 0, 32;
+T_4.28 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_4.29, 5;
+    %jmp/1 T_4.29, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_4.28;
+T_4.29 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f27f0_0, 0, 1;
+    %pushi/vec4 3, 0, 32;
+T_4.30 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_4.31, 5;
+    %jmp/1 T_4.31, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_4.30;
+T_4.31 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f27f0_0, 0, 1;
+    %pushi/vec4 5, 0, 32;
+T_4.32 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_4.33, 5;
+    %jmp/1 T_4.33, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_4.32;
+T_4.33 ;
+    %pop/vec4 1;
+    %end;
+S_000001a100012740 .scope task, "simulate_directory_operations" "simulate_directory_operations" 3 415, 3 415 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a76d0_0 .var "addr", 47 0;
+v000001a1000a7270_0 .var "txn_id", 11 0;
+TD_tb_hn_f_integration.simulate_directory_operations ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 3, 0, 32;
+T_5.34 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_5.35, 5;
+    %jmp/1 T_5.35, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_5.34;
+T_5.35 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 8, 0, 32;
+T_5.36 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_5.37, 5;
+    %jmp/1 T_5.37, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_5.36;
+T_5.37 ;
+    %pop/vec4 1;
+    %end;
+S_000001a1000f1510 .scope task, "simulate_memory_access" "simulate_memory_access" 3 439, 3 439 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7590_0 .var "addr", 47 0;
+v000001a1000a73b0_0 .var "data", 511 0;
+TD_tb_hn_f_integration.simulate_memory_access ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3010_0, 0, 1;
+    %pushi/vec4 2, 0, 32;
+T_6.38 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_6.39, 5;
+    %jmp/1 T_6.39, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_6.38;
+T_6.39 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3010_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f2570_0, 0, 1;
+    %pushi/vec4 3, 0, 32;
+T_6.40 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_6.41, 5;
+    %jmp/1 T_6.41, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_6.40;
+T_6.41 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f2570_0, 0, 1;
+    %pushi/vec4 5, 0, 32;
+T_6.42 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_6.43, 5;
+    %jmp/1 T_6.43, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_6.42;
+T_6.43 ;
+    %pop/vec4 1;
+    %end;
+S_000001a1000f16a0 .scope task, "simulate_normal_operation" "simulate_normal_operation" 3 450, 3 450 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7630_0 .var "addr", 47 0;
+v000001a1000a7810_0 .var "src_id", 7 0;
+v000001a1000a7e50_0 .var "txn_id", 11 0;
+TD_tb_hn_f_integration.simulate_normal_operation ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 3, 0, 32;
+T_7.44 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_7.45, 5;
+    %jmp/1 T_7.45, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_7.44;
+T_7.45 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f3d30_0, 0, 1;
+    %pushi/vec4 2, 0, 32;
+T_7.46 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_7.47, 5;
+    %jmp/1 T_7.47, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_7.46;
+T_7.47 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f3d30_0, 0, 1;
+    %pushi/vec4 5, 0, 32;
+T_7.48 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_7.49, 5;
+    %jmp/1 T_7.49, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_7.48;
+T_7.49 ;
+    %pop/vec4 1;
+    %end;
+S_000001a1000f11f0 .scope task, "simulate_read_request" "simulate_read_request" 3 381, 3 381 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a79f0_0 .var "addr", 47 0;
+v000001a1000a7bd0_0 .var "src_id", 7 0;
+v000001a1000a7310_0 .var "txn_id", 11 0;
+TD_tb_hn_f_integration.simulate_read_request ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 5, 0, 32;
+T_8.50 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_8.51, 5;
+    %jmp/1 T_8.51, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_8.50;
+T_8.51 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 10, 0, 32;
+T_8.52 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_8.53, 5;
+    %jmp/1 T_8.53, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_8.52;
+T_8.53 ;
+    %pop/vec4 1;
+    %end;
+S_000001a1000f19c0 .scope task, "simulate_snoop_filtering" "simulate_snoop_filtering" 3 423, 3 423 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7a90_0 .var "addr", 47 0;
+v000001a1000a74f0_0 .var "src_id", 7 0;
+v000001a1000a7b30_0 .var "txn_id", 11 0;
+TD_tb_hn_f_integration.simulate_snoop_filtering ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 3, 0, 32;
+T_9.54 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_9.55, 5;
+    %jmp/1 T_9.55, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_9.54;
+T_9.55 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %load/vec4 v000001a1000f8d20_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001a1000f8d20_0, 0, 32;
+    %vpi_func 3 431 "$urandom_range" 32, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000000001 {0 0 0};
+    %cmpi/ne 0, 0, 32;
+    %jmp/0xz  T_9.56, 4;
+    %load/vec4 v000001a1000f2930_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001a1000f2930_0, 0, 32;
+    %jmp T_9.57;
+T_9.56 ;
+    %load/vec4 v000001a1000f2bb0_0;
+    %addi 1, 0, 32;
+    %store/vec4 v000001a1000f2bb0_0, 0, 32;
+T_9.57 ;
+    %pushi/vec4 5, 0, 32;
+T_9.58 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_9.59, 5;
+    %jmp/1 T_9.59, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_9.58;
+T_9.59 ;
+    %pop/vec4 1;
+    %end;
+S_000001a1000f1830 .scope task, "simulate_write_request" "simulate_write_request" 3 390, 3 390 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000a7c70_0 .var "addr", 47 0;
+v000001a1000a6f50_0 .var "data", 511 0;
+v000001a1000a7d10_0 .var "src_id", 7 0;
+v000001a1000a6ff0_0 .var "txn_id", 11 0;
+TD_tb_hn_f_integration.simulate_write_request ;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 3, 0, 32;
+T_10.60 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_10.61, 5;
+    %jmp/1 T_10.61, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_10.60;
+T_10.61 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f26b0_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f24d0_0, 0, 1;
+    %pushi/vec4 2, 0, 32;
+T_10.62 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_10.63, 5;
+    %jmp/1 T_10.63, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_10.62;
+T_10.63 ;
+    %pop/vec4 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f24d0_0, 0, 1;
+    %pushi/vec4 10, 0, 32;
+T_10.64 %dup/vec4;
+    %pushi/vec4 0, 0, 32;
+    %cmp/s;
+    %jmp/1xz T_10.65, 5;
+    %jmp/1 T_10.65, 4;
+    %pushi/vec4 1, 0, 32;
+    %sub;
+    %wait E_000001a1000c19d0;
+    %jmp T_10.64;
+T_10.65 ;
+    %pop/vec4 1;
+    %end;
+S_000001a1000f1e70 .scope task, "test_coherency_snoop_flow" "test_coherency_snoop_flow" 3 186, 3 186 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000f2070_0 .var/2s "local_pass_start", 31 0;
+TD_tb_hn_f_integration.test_coherency_snoop_flow ;
+    %vpi_call/w 3 189 "$display", "Testing Coherency Snoop Flow - Requirements 4.3, 4.4" {0 0 0};
+    %vpi_call/w 3 190 "$display", "---------------------------------------------------" {0 0 0};
+    %fork t_3, S_000001a1000f1ce0;
+    %jmp t_2;
+    .scope S_000001a1000f1ce0;
+t_3 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f2ed0_0, 0, 32;
+T_11.66 ;
+    %load/vec4 v000001a1000f2ed0_0;
+    %cmpi/s 8, 0, 32;
+    %jmp/0xz T_11.67, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 194 "$sformatf", "Coherency_Snoop_Test_%0d", v000001a1000f2ed0_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000a7950_0, 0, 48;
+    %vpi_func 3 197 "$urandom_range" 32, 32'sb00000000000000000000000000000001, 32'sb00000000000000000000111111111111 {0 0 0};
+    %pad/u 12;
+    %store/vec4 v000001a1000a71d0_0, 0, 12;
+    %vpi_func 3 198 "$urandom_range" 32, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000000111 {0 0 0};
+    %pad/u 8;
+    %store/vec4 v000001a1000a7db0_0, 0, 8;
+    %fork TD_tb_hn_f_integration.simulate_coherency_conflict, S_000001a1000b1260;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_snoop_generation, S_000001a1000f5660;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_11.68, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f2ed0_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz  T_11.70, 5;
+    %vpi_call/w 3 202 "$display", "  [PASS] %s: Coherency snoop flow worked correctly", v000001a1000f94a0_0 {0 0 0};
+T_11.70 ;
+    %jmp T_11.69;
+T_11.68 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 205 "$display", "  [FAIL] %s: Coherency snoop flow failed", v000001a1000f94a0_0 {0 0 0};
+T_11.69 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f2ed0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f2ed0_0, 0, 32;
+    %jmp T_11.66;
+T_11.67 ;
+    %end;
+    .scope S_000001a1000f1e70;
+t_2 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f2070_0;
+    %sub;
+    %vpi_call/w 3 209 "$display", "  Coherency Snoop Flow: %0d/8 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %end;
+S_000001a1000f1ce0 .scope begin, "$ivl_for_loop2" "$ivl_for_loop2" 3 192, 3 192 0, S_000001a1000f1e70;
+ .timescale -9 -12;
+v000001a1000f2ed0_0 .var/2s "i", 31 0;
+S_000001a1000f1b50 .scope task, "test_directory_state_management" "test_directory_state_management" 3 216, 3 216 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000f3150_0 .var/2s "local_pass_start", 31 0;
+TD_tb_hn_f_integration.test_directory_state_management ;
+    %vpi_call/w 3 219 "$display", "Testing Directory State Management - Requirements 4.4" {0 0 0};
+    %vpi_call/w 3 220 "$display", "-------------------------------------------------" {0 0 0};
+    %fork t_5, S_000001a1000f1060;
+    %jmp t_4;
+    .scope S_000001a1000f1060;
+t_5 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f3e70_0, 0, 32;
+T_12.72 ;
+    %load/vec4 v000001a1000f3e70_0;
+    %cmpi/s 6, 0, 32;
+    %jmp/0xz T_12.73, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 224 "$sformatf", "Directory_State_Test_%0d", v000001a1000f3e70_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000a76d0_0, 0, 48;
+    %vpi_func 3 227 "$urandom_range" 32, 32'sb00000000000000000000000000000001, 32'sb00000000000000000000111111111111 {0 0 0};
+    %pad/u 12;
+    %store/vec4 v000001a1000a7270_0, 0, 12;
+    %fork TD_tb_hn_f_integration.simulate_directory_operations, S_000001a100012740;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_directory_state, S_000001a1000f4080;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_12.74, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f3e70_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz  T_12.76, 5;
+    %vpi_call/w 3 231 "$display", "  [PASS] %s: Directory state management working", v000001a1000f94a0_0 {0 0 0};
+T_12.76 ;
+    %jmp T_12.75;
+T_12.74 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 234 "$display", "  [FAIL] %s: Directory state management failed", v000001a1000f94a0_0 {0 0 0};
+T_12.75 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3e70_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3e70_0, 0, 32;
+    %jmp T_12.72;
+T_12.73 ;
+    %end;
+    .scope S_000001a1000f1b50;
+t_4 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f3150_0;
+    %sub;
+    %vpi_call/w 3 238 "$display", "  Directory State Management: %0d/6 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %end;
+S_000001a1000f1060 .scope begin, "$ivl_for_loop3" "$ivl_for_loop3" 3 222, 3 222 0, S_000001a1000f1b50;
+ .timescale -9 -12;
+v000001a1000f3e70_0 .var/2s "i", 31 0;
+S_000001a1000f1380 .scope task, "test_error_handling_integration" "test_error_handling_integration" 3 306, 3 306 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000f3970_0 .var/2s "local_pass_start", 31 0;
+TD_tb_hn_f_integration.test_error_handling_integration ;
+    %vpi_call/w 3 309 "$display", "Testing Error Handling Integration - Requirements 4.1" {0 0 0};
+    %vpi_call/w 3 310 "$display", "--------------------------------------------------" {0 0 0};
+    %fork t_7, S_000001a1000f5ca0;
+    %jmp t_6;
+    .scope S_000001a1000f5ca0;
+t_7 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f3470_0, 0, 32;
+T_13.78 ;
+    %load/vec4 v000001a1000f3470_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz T_13.79, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 314 "$sformatf", "Error_Handling_Test_%0d", v000001a1000f3470_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000a7630_0, 0, 48;
+    %vpi_func 3 317 "$urandom_range" 32, 32'sb00000000000000000000000000000001, 32'sb00000000000000000000111111111111 {0 0 0};
+    %pad/u 12;
+    %store/vec4 v000001a1000a7e50_0, 0, 12;
+    %vpi_func 3 318 "$urandom_range" 32, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000001111 {0 0 0};
+    %pad/u 8;
+    %store/vec4 v000001a1000a7810_0, 0, 8;
+    %fork TD_tb_hn_f_integration.simulate_normal_operation, S_000001a1000f16a0;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_no_errors, S_000001a1000f4210;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_13.80, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f3470_0;
+    %cmpi/s 2, 0, 32;
+    %jmp/0xz  T_13.82, 5;
+    %vpi_call/w 3 322 "$display", "  [PASS] %s: No unexpected errors in normal operation", v000001a1000f94a0_0 {0 0 0};
+T_13.82 ;
+    %jmp T_13.81;
+T_13.80 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 325 "$display", "  [FAIL] %s: Unexpected errors detected", v000001a1000f94a0_0 {0 0 0};
+T_13.81 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3470_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3470_0, 0, 32;
+    %jmp T_13.78;
+T_13.79 ;
+    %end;
+    .scope S_000001a1000f1380;
+t_6 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f3970_0;
+    %sub;
+    %vpi_call/w 3 329 "$display", "  Error Handling Integration: %0d/3 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %end;
+S_000001a1000f5ca0 .scope begin, "$ivl_for_loop6" "$ivl_for_loop6" 3 312, 3 312 0, S_000001a1000f1380;
+ .timescale -9 -12;
+v000001a1000f3470_0 .var/2s "i", 31 0;
+S_000001a1000f5340 .scope task, "test_memory_interface_integration" "test_memory_interface_integration" 3 277, 3 277 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000f35b0_0 .var/2s "local_pass_start", 31 0;
+TD_tb_hn_f_integration.test_memory_interface_integration ;
+    %vpi_call/w 3 280 "$display", "Testing Memory Interface Integration - Requirements 4.1, 4.2" {0 0 0};
+    %vpi_call/w 3 281 "$display", "--------------------------------------------------------" {0 0 0};
+    %fork t_9, S_000001a1000f51b0;
+    %jmp t_8;
+    .scope S_000001a1000f51b0;
+t_9 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f36f0_0, 0, 32;
+T_14.84 ;
+    %load/vec4 v000001a1000f36f0_0;
+    %cmpi/s 5, 0, 32;
+    %jmp/0xz T_14.85, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 285 "$sformatf", "Memory_Interface_Test_%0d", v000001a1000f36f0_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000a7590_0, 0, 48;
+    %alloc S_000001a10009cbd0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_test_data, S_000001a10009cbd0;
+    %free S_000001a10009cbd0;
+    %store/vec4 v000001a1000a73b0_0, 0, 512;
+    %fork TD_tb_hn_f_integration.simulate_memory_access, S_000001a1000f1510;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_memory_interface, S_000001a1000f54d0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_14.86, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f36f0_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz  T_14.88, 5;
+    %vpi_call/w 3 292 "$display", "  [PASS] %s: Memory interface working correctly", v000001a1000f94a0_0 {0 0 0};
+T_14.88 ;
+    %jmp T_14.87;
+T_14.86 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 295 "$display", "  [FAIL] %s: Memory interface failed", v000001a1000f94a0_0 {0 0 0};
+T_14.87 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f36f0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f36f0_0, 0, 32;
+    %jmp T_14.84;
+T_14.85 ;
+    %end;
+    .scope S_000001a1000f5340;
+t_8 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f35b0_0;
+    %sub;
+    %vpi_call/w 3 299 "$display", "  Memory Interface Integration: %0d/5 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %end;
+S_000001a1000f51b0 .scope begin, "$ivl_for_loop5" "$ivl_for_loop5" 3 283, 3 283 0, S_000001a1000f5340;
+ .timescale -9 -12;
+v000001a1000f36f0_0 .var/2s "i", 31 0;
+S_000001a1000f5e30 .scope task, "test_read_miss_flow" "test_read_miss_flow" 3 120, 3 120 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+TD_tb_hn_f_integration.test_read_miss_flow ;
+    %vpi_call/w 3 121 "$display", "Testing Read Miss Flow - Requirements 4.1, 4.2" {0 0 0};
+    %vpi_call/w 3 122 "$display", "---------------------------------------------" {0 0 0};
+    %fork t_11, S_000001a1000f4e90;
+    %jmp t_10;
+    .scope S_000001a1000f4e90;
+t_11 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f31f0_0, 0, 32;
+T_15.90 ;
+    %load/vec4 v000001a1000f31f0_0;
+    %cmpi/s 10, 0, 32;
+    %jmp/0xz T_15.91, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 126 "$sformatf", "Read_Miss_Flow_Test_%0d", v000001a1000f31f0_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f97c0_0, 0, 1;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000f2890_0, 0, 48;
+    %alloc S_000001a10009cbd0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_test_data, S_000001a10009cbd0;
+    %free S_000001a10009cbd0;
+    %store/vec4 v000001a1000f92c0_0, 0, 512;
+    %vpi_func 3 132 "$urandom_range" 32, 32'sb00000000000000000000000000000001, 32'sb00000000000000000000111111111111 {0 0 0};
+    %pad/u 12;
+    %store/vec4 v000001a1000f9220_0, 0, 12;
+    %vpi_func 3 133 "$urandom_range" 32, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000001111 {0 0 0};
+    %pad/u 8;
+    %store/vec4 v000001a1000f8b40_0, 0, 8;
+    %load/vec4 v000001a1000f2890_0;
+    %store/vec4 v000001a1000a79f0_0, 0, 48;
+    %load/vec4 v000001a1000f9220_0;
+    %store/vec4 v000001a1000a7310_0, 0, 12;
+    %load/vec4 v000001a1000f8b40_0;
+    %store/vec4 v000001a1000a7bd0_0, 0, 8;
+    %fork TD_tb_hn_f_integration.simulate_read_request, S_000001a1000f11f0;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_read_response, S_000001a1000f4b70;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_15.92, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f31f0_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz  T_15.94, 5;
+    %vpi_call/w 3 141 "$display", "  [PASS] %s: Read miss flow completed correctly", v000001a1000f94a0_0 {0 0 0};
+T_15.94 ;
+    %jmp T_15.93;
+T_15.92 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 144 "$display", "  [FAIL] %s: Read miss flow failed", v000001a1000f94a0_0 {0 0 0};
+T_15.93 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f31f0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f31f0_0, 0, 32;
+    %jmp T_15.90;
+T_15.91 ;
+    %end;
+    .scope S_000001a1000f5e30;
+t_10 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f9c20_0;
+    %subi 10, 0, 32;
+    %sub;
+    %vpi_call/w 3 148 "$display", "  Read Miss Flow: %0d/10 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %end;
+S_000001a1000f4e90 .scope begin, "$ivl_for_loop0" "$ivl_for_loop0" 3 124, 3 124 0, S_000001a1000f5e30;
+ .timescale -9 -12;
+v000001a1000f31f0_0 .var/2s "i", 31 0;
+S_000001a1000f49e0 .scope task, "test_snoop_filter_integration" "test_snoop_filter_integration" 3 245, 3 245 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000f2e30_0 .var/2s "local_pass_start", 31 0;
+TD_tb_hn_f_integration.test_snoop_filter_integration ;
+    %vpi_call/w 3 248 "$display", "Testing Snoop Filter Integration - Requirements 4.3, 4.5" {0 0 0};
+    %vpi_call/w 3 249 "$display", "------------------------------------------------------" {0 0 0};
+    %fork t_13, S_000001a1000f46c0;
+    %jmp t_12;
+    .scope S_000001a1000f46c0;
+t_13 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f2250_0, 0, 32;
+T_16.96 ;
+    %load/vec4 v000001a1000f2250_0;
+    %cmpi/s 5, 0, 32;
+    %jmp/0xz T_16.97, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 253 "$sformatf", "Snoop_Filter_Test_%0d", v000001a1000f2250_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000a7a90_0, 0, 48;
+    %vpi_func 3 256 "$urandom_range" 32, 32'sb00000000000000000000000000000001, 32'sb00000000000000000000111111111111 {0 0 0};
+    %pad/u 12;
+    %store/vec4 v000001a1000a7b30_0, 0, 12;
+    %vpi_func 3 257 "$urandom_range" 32, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000001111 {0 0 0};
+    %pad/u 8;
+    %store/vec4 v000001a1000a74f0_0, 0, 8;
+    %fork TD_tb_hn_f_integration.simulate_snoop_filtering, S_000001a1000f19c0;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_snoop_filter, S_000001a1000f5020;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_16.98, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f2250_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz  T_16.100, 5;
+    %vpi_call/w 3 261 "$display", "  [PASS] %s: Snoop filter integration working", v000001a1000f94a0_0 {0 0 0};
+T_16.100 ;
+    %jmp T_16.99;
+T_16.98 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 264 "$display", "  [FAIL] %s: Snoop filter integration failed", v000001a1000f94a0_0 {0 0 0};
+T_16.99 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f2250_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f2250_0, 0, 32;
+    %jmp T_16.96;
+T_16.97 ;
+    %end;
+    .scope S_000001a1000f49e0;
+t_12 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f2e30_0;
+    %sub;
+    %vpi_call/w 3 268 "$display", "  Snoop Filter Integration: %0d/5 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %vpi_call/w 3 269 "$display", "  Final Statistics - Total: %0d, Filtered: %0d, Broadcast: %0d", v000001a1000f8d20_0, v000001a1000f2930_0, v000001a1000f2bb0_0 {0 0 0};
+    %end;
+S_000001a1000f46c0 .scope begin, "$ivl_for_loop4" "$ivl_for_loop4" 3 251, 3 251 0, S_000001a1000f49e0;
+ .timescale -9 -12;
+v000001a1000f2250_0 .var/2s "i", 31 0;
+S_000001a1000f4850 .scope task, "test_write_hit_flow" "test_write_hit_flow" 3 155, 3 155 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+v000001a1000f3290_0 .var/2s "local_pass_start", 31 0;
+TD_tb_hn_f_integration.test_write_hit_flow ;
+    %vpi_call/w 3 158 "$display", "Testing Write Hit Flow - Requirements 4.1, 4.2" {0 0 0};
+    %vpi_call/w 3 159 "$display", "--------------------------------------------" {0 0 0};
+    %fork t_15, S_000001a1000f4d00;
+    %jmp t_14;
+    .scope S_000001a1000f4d00;
+t_15 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f2430_0, 0, 32;
+T_17.102 ;
+    %load/vec4 v000001a1000f2430_0;
+    %cmpi/s 10, 0, 32;
+    %jmp/0xz T_17.103, 5;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f9c20_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %vpi_func/s 3 163 "$sformatf", "Write_Hit_Flow_Test_%0d", v000001a1000f2430_0 {0 0 0};
+    %store/str v000001a1000f94a0_0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000001a1000f97c0_0, 0, 1;
+    %alloc S_000001a1000c96e0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_cache_line_address, S_000001a1000c96e0;
+    %free S_000001a1000c96e0;
+    %store/vec4 v000001a1000a7c70_0, 0, 48;
+    %vpi_func 3 167 "$urandom_range" 32, 32'sb00000000000000000000000000000001, 32'sb00000000000000000000111111111111 {0 0 0};
+    %pad/u 12;
+    %store/vec4 v000001a1000a6ff0_0, 0, 12;
+    %vpi_func 3 168 "$urandom_range" 32, 32'sb00000000000000000000000000000000, 32'sb00000000000000000000000000001111 {0 0 0};
+    %pad/u 8;
+    %store/vec4 v000001a1000a7d10_0, 0, 8;
+    %alloc S_000001a10009cbd0;
+    %callf/vec4 TD_tb_hn_f_integration.generate_test_data, S_000001a10009cbd0;
+    %free S_000001a10009cbd0;
+    %store/vec4 v000001a1000a6f50_0, 0, 512;
+    %fork TD_tb_hn_f_integration.simulate_write_request, S_000001a1000f1830;
+    %join;
+    %callf/vec4 TD_tb_hn_f_integration.verify_write_response, S_000001a1000f43a0;
+    %flag_set/vec4 8;
+    %jmp/0xz  T_17.104, 8;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f3ab0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %load/vec4 v000001a1000f2430_0;
+    %cmpi/s 3, 0, 32;
+    %jmp/0xz  T_17.106, 5;
+    %vpi_call/w 3 172 "$display", "  [PASS] %s: Write hit flow completed correctly", v000001a1000f94a0_0 {0 0 0};
+T_17.106 ;
+    %jmp T_17.105;
+T_17.104 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f38d0_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %vpi_call/w 3 175 "$display", "  [FAIL] %s: Write hit flow failed", v000001a1000f94a0_0 {0 0 0};
+T_17.105 ;
+    ; show_stmt_assign_vector: Get l-value for compressed += operand
+    %load/vec4 v000001a1000f2430_0;
+    %pushi/vec4 1, 0, 32;
+    %add;
+    %cast2;
+    %store/vec4 v000001a1000f2430_0, 0, 32;
+    %jmp T_17.102;
+T_17.103 ;
+    %end;
+    .scope S_000001a1000f4850;
+t_14 %join;
+    %load/vec4 v000001a1000f3ab0_0;
+    %load/vec4 v000001a1000f3290_0;
+    %sub;
+    %vpi_call/w 3 179 "$display", "  Write Hit Flow: %0d/10 tests passed\012", S<0,vec4,s32> {1 0 0};
+    %end;
+S_000001a1000f4d00 .scope begin, "$ivl_for_loop1" "$ivl_for_loop1" 3 161, 3 161 0, S_000001a1000f4850;
+ .timescale -9 -12;
+v000001a1000f2430_0 .var/2s "i", 31 0;
+S_000001a1000f4080 .scope function.vec4.s1, "verify_directory_state" "verify_directory_state" 3 475, 3 475 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_directory_state is vec4 return value of scope S_000001a1000f4080
+TD_tb_hn_f_integration.verify_directory_state ;
+    %pushi/vec4 1, 0, 1;
+    %ret/vec4 0, 0, 1;  Assign to verify_directory_state (store_vec4_to_lval)
+    %disable/flow S_000001a1000f4080;
+    %end;
+S_000001a1000f54d0 .scope function.vec4.s1, "verify_memory_interface" "verify_memory_interface" 3 483, 3 483 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_memory_interface is vec4 return value of scope S_000001a1000f54d0
+TD_tb_hn_f_integration.verify_memory_interface ;
+    %pushi/vec4 1, 0, 1;
+    %ret/vec4 0, 0, 1;  Assign to verify_memory_interface (store_vec4_to_lval)
+    %disable/flow S_000001a1000f54d0;
+    %end;
+S_000001a1000f4210 .scope function.vec4.s1, "verify_no_errors" "verify_no_errors" 3 487, 3 487 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_no_errors is vec4 return value of scope S_000001a1000f4210
+TD_tb_hn_f_integration.verify_no_errors ;
+    %load/vec4 v000001a1000f3c90_0;
+    %nor/r;
+    %ret/vec4 0, 0, 1;  Assign to verify_no_errors (store_vec4_to_lval)
+    %disable/flow S_000001a1000f4210;
+    %end;
+S_000001a1000f4b70 .scope function.vec4.s1, "verify_read_response" "verify_read_response" 3 463, 3 463 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_read_response is vec4 return value of scope S_000001a1000f4b70
+TD_tb_hn_f_integration.verify_read_response ;
+    %pushi/vec4 1, 0, 1;
+    %ret/vec4 0, 0, 1;  Assign to verify_read_response (store_vec4_to_lval)
+    %disable/flow S_000001a1000f4b70;
+    %end;
+S_000001a1000f5020 .scope function.vec4.s1, "verify_snoop_filter" "verify_snoop_filter" 3 479, 3 479 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_snoop_filter is vec4 return value of scope S_000001a1000f5020
+TD_tb_hn_f_integration.verify_snoop_filter ;
+    %pushi/vec4 1, 0, 1;
+    %ret/vec4 0, 0, 1;  Assign to verify_snoop_filter (store_vec4_to_lval)
+    %disable/flow S_000001a1000f5020;
+    %end;
+S_000001a1000f5660 .scope function.vec4.s1, "verify_snoop_generation" "verify_snoop_generation" 3 471, 3 471 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_snoop_generation is vec4 return value of scope S_000001a1000f5660
+TD_tb_hn_f_integration.verify_snoop_generation ;
+    %pushi/vec4 1, 0, 1;
+    %ret/vec4 0, 0, 1;  Assign to verify_snoop_generation (store_vec4_to_lval)
+    %disable/flow S_000001a1000f5660;
+    %end;
+S_000001a1000f43a0 .scope function.vec4.s1, "verify_write_response" "verify_write_response" 3 467, 3 467 0, S_000001a1000a6d20;
+ .timescale -9 -12;
+; Variable verify_write_response is vec4 return value of scope S_000001a1000f43a0
+TD_tb_hn_f_integration.verify_write_response ;
+    %pushi/vec4 1, 0, 1;
+    %ret/vec4 0, 0, 1;  Assign to verify_write_response (store_vec4_to_lval)
+    %disable/flow S_000001a1000f43a0;
+    %end;
+    .scope S_000001a1000f1e70;
+T_25 ;
+    %load/vec4 v000001a1000f3ab0_0;
+    %store/vec4 v000001a1000f2070_0, 0, 32;
+    %end;
+    .thread T_25, $init;
+    .scope S_000001a1000f1b50;
+T_26 ;
+    %load/vec4 v000001a1000f3ab0_0;
+    %store/vec4 v000001a1000f3150_0, 0, 32;
+    %end;
+    .thread T_26, $init;
+    .scope S_000001a1000f1380;
+T_27 ;
+    %load/vec4 v000001a1000f3ab0_0;
+    %store/vec4 v000001a1000f3970_0, 0, 32;
+    %end;
+    .thread T_27, $init;
+    .scope S_000001a1000f5340;
+T_28 ;
+    %load/vec4 v000001a1000f3ab0_0;
+    %store/vec4 v000001a1000f35b0_0, 0, 32;
+    %end;
+    .thread T_28, $init;
+    .scope S_000001a1000f49e0;
+T_29 ;
+    %load/vec4 v000001a1000f3ab0_0;
+    %store/vec4 v000001a1000f2e30_0, 0, 32;
+    %end;
+    .thread T_29, $init;
+    .scope S_000001a1000f4850;
+T_30 ;
+    %load/vec4 v000001a1000f3ab0_0;
+    %store/vec4 v000001a1000f3290_0, 0, 32;
+    %end;
+    .thread T_30, $init;
+    .scope S_000001a1000a6d20;
+T_31 ;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f9c20_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f3ab0_0, 0, 32;
+    %pushi/vec4 0, 0, 32;
+    %store/vec4 v000001a1000f38d0_0, 0, 32;
+    %end;
+    .thread T_31, $init;
+    .scope S_000001a1000a6d20;
+T_32 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001a1000f2390_0, 0, 1;
+T_32.0 ;
+    %delay 5000, 0;
+    %load/vec4 v000001a1000f2390_0;
+    %inv;
+    %store/vec4 v000001a1000f2390_0, 0, 1;
+    %jmp T_32.0;
+    %end;
+    .thread T_32;
+    .scope S_000001a1000a6d20;
+T_33 ;
+    %vpi_call/w 3 83 "$display", "=============================================================================" {0 0 0};
+    %vpi_call/w 3 84 "$display", "HN-F Integration Test - Complete Coherency Flow Validation" {0 0 0};
+    %vpi_call/w 3 85 "$display", "Task: 8.2 \347\274\226\345\206\231 HN-F \351\233\206\346\210\220\346\265\213\350\257\225" {0 0 0};
+    %vpi_call/w 3 86 "$display", "Requirements: 4.1, 4.2, 4.3, 4.4" {0 0 0};
+    %vpi_call/w 3 87 "$display", "Cache Size: %0d bytes, Ways: %0d", P_000001a10009dfc8, P_000001a10009e118 {0 0 0};
+    %vpi_call/w 3 88 "$display", "Directory Entries: %0d, Filter Entries: %0d", P_000001a10009e000, P_000001a10009e038 {0 0 0};
+    %vpi_call/w 3 89 "$display", "=============================================================================\012" {0 0 0};
+    %fork TD_tb_hn_f_integration.initialize_test_environment, S_000001a1000bfec0;
+    %join;
+    %fork TD_tb_hn_f_integration.test_read_miss_flow, S_000001a1000f5e30;
+    %join;
+    %fork TD_tb_hn_f_integration.test_write_hit_flow, S_000001a1000f4850;
+    %join;
+    %fork TD_tb_hn_f_integration.test_coherency_snoop_flow, S_000001a1000f1e70;
+    %join;
+    %fork TD_tb_hn_f_integration.test_directory_state_management, S_000001a1000f1b50;
+    %join;
+    %fork TD_tb_hn_f_integration.test_snoop_filter_integration, S_000001a1000f49e0;
+    %join;
+    %fork TD_tb_hn_f_integration.test_memory_interface_integration, S_000001a1000f5340;
+    %join;
+    %fork TD_tb_hn_f_integration.test_error_handling_integration, S_000001a1000f1380;
+    %join;
+    %fork TD_tb_hn_f_integration.print_test_summary, S_000001a1000b52a0;
+    %join;
+    %load/vec4 v000001a1000f38d0_0;
+    %cmpi/e 0, 0, 32;
+    %jmp/0xz  T_33.0, 4;
+    %vpi_call/w 3 107 "$display", "*** ALL HN-F INTEGRATION TESTS PASSED ***\012" {0 0 0};
+    %vpi_call/w 3 108 "$finish", 32'sb00000000000000000000000000000000 {0 0 0};
+    %jmp T_33.1;
+T_33.0 ;
+    %vpi_call/w 3 110 "$display", "*** SOME HN-F INTEGRATION TESTS FAILED ***\012" {0 0 0};
+    %vpi_call/w 3 111 "$finish", 32'sb00000000000000000000000000000001 {0 0 0};
+T_33.1 ;
+    %end;
+    .thread T_33;
+# The file index is used to find the file name in the following table.
+:file_names 4;
+    "N/A";
+    "<interactive>";
+    "-";
+    "tb_hn_f_integration.sv";
