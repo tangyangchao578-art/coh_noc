@@ -151,7 +151,7 @@ endif
 
 # Clean build artifacts
 clean:
-	rm -rf $(SIM_OUT) $(VVP_OUT) test_xp_unit.vvp test_routing.vvp test_vc_buffer.vvp test_flow_control.vvp test_xp_router.vvp simv simv_xp_unit simv_routing simv_vc_buffer simv_flow_control simv_xp_router simv.daidir csrc ucli.key *.log *.vcd
+	rm -rf $(SIM_OUT) $(VVP_OUT) test_xp_unit.vvp test_routing.vvp test_vc_buffer.vvp test_flow_control.vvp test_xp_router.vvp test_mesi.vvp test_snoop_filter.vvp simv simv_xp_unit simv_routing simv_vc_buffer simv_flow_control simv_xp_router simv_mesi simv_snoop_filter simv.daidir csrc ucli.key *.log *.vcd
 
 .DEFAULT_GOAL := all
 
@@ -214,6 +214,22 @@ ifeq ($(SIM),iverilog)
 else ifeq ($(SIM),vcs)
 	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) $(SRC_DIR)/mesi_state_machine.sv tb_mesi_properties.sv -o simv_mesi
 	./simv_mesi
+else
+	@echo "Unsupported simulator: $(SIM)"
+	@exit 1
+endif
+
+# Test Snoop Filter Properties
+test_snoop_filter: tb_snoop_filter_properties.sv $(SOURCES) $(SRC_DIR)/snoop_filter.sv
+	@echo "==================================================================="
+	@echo "Running Property Test: Snoop Filter Optimization"
+	@echo "==================================================================="
+ifeq ($(SIM),iverilog)
+	iverilog -g2012 -o test_snoop_filter.vvp $(SOURCES) $(SRC_DIR)/snoop_filter.sv tb_snoop_filter_properties.sv
+	vvp test_snoop_filter.vvp
+else ifeq ($(SIM),vcs)
+	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) $(SRC_DIR)/snoop_filter.sv tb_snoop_filter_properties.sv -o simv_snoop_filter
+	./simv_snoop_filter
 else
 	@echo "Unsupported simulator: $(SIM)"
 	@exit 1

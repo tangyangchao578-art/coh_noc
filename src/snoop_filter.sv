@@ -47,19 +47,6 @@ module snoop_filter #(
 );
 
     // =============================================================================
-    // Tracking Operation Types
-    // =============================================================================
-    
-    typedef enum logic [2:0] {
-        TRACK_ADD_SHARER    = 3'b000,
-        TRACK_REMOVE_SHARER = 3'b001,
-        TRACK_SET_EXCLUSIVE = 3'b010,
-        TRACK_SET_MODIFIED  = 3'b011,
-        TRACK_INVALIDATE    = 3'b100,
-        TRACK_EVICT         = 3'b101
-    } track_operation_e;
-    
-    // =============================================================================
     // Filter Entry Structure
     // =============================================================================
     
