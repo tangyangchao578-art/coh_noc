@@ -32,6 +32,12 @@ src/rn_f.sv
 src/hn_f.sv
 src/sn_f.sv
 
+# Error handling modules
+src/error_detection.sv
+src/error_reporter.sv
+src/retransmit_controller.sv
+src/transaction_timeout_handler.sv
+
 # System integration modules
 src/coh_noc_config.sv
 src/coh_noc_system.sv

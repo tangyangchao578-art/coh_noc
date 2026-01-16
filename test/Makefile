@@ -277,3 +277,21 @@ else
 	@echo "Unsupported simulator: $(SIM)"
 	@exit 1
 endif
+
+# Test Error Handling (Simplified)
+test_error_handling: tb_error_handling_simple.sv $(SOURCES)
+	@echo "==================================================================="
+	@echo "Running Error Handling Tests"
+	@echo "Task: 13.3 编写错误处理测试"
+	@echo "Testing error detection, reporting, and recovery mechanisms"
+	@echo "==================================================================="
+ifeq ($(SIM),iverilog)
+	iverilog -g2012 -o test_error_handling_simple.vvp $(SOURCES) tb_error_handling_simple.sv
+	vvp test_error_handling_simple.vvp
+else ifeq ($(SIM),vcs)
+	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) tb_error_handling_simple.sv -o simv_error_handling
+	./simv_error_handling
+else
+	@echo "Unsupported simulator: $(SIM)"
+	@exit 1
+endif
