@@ -252,3 +252,28 @@ else
 	@echo "Unsupported simulator: $(SIM)"
 	@exit 1
 endif
+
+# Test SN-F Multi-Channel Parallel Access Properties
+test_sn_f_multichannel: tb_sn_f_multichannel_properties.sv $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/ddr_if.sv $(SRC_DIR)/sn_f.sv
+	@echo "==================================================================="
+	@echo "Running Property Test: SN-F Multi-Channel Parallel Access"
+	@echo "Feature: coh-noc-architecture, Property 16"
+	@echo "Task: 10.4 为多通道访问编写属性测试"
+	@echo "Requirements: 6.4"
+	@echo "==================================================================="
+ifeq ($(SIM),iverilog)
+	@echo "WARNING: This test requires SystemVerilog features not supported by Iverilog"
+	@echo "Please use VCS, Xcelium, or Questa simulator"
+	@exit 1
+else ifeq ($(SIM),vcs)
+	vcs -sverilog -full64 +v2k -timescale=1ns/1ps $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/ddr_if.sv $(SRC_DIR)/sn_f.sv tb_sn_f_multichannel_properties.sv -o simv_sn_f_multichannel
+	./simv_sn_f_multichannel
+else ifeq ($(SIM),xcelium)
+	xrun -sv -timescale 1ns/1ps $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/ddr_if.sv $(SRC_DIR)/sn_f.sv tb_sn_f_multichannel_properties.sv
+else ifeq ($(SIM),questa)
+	vlog -sv $(SOURCES) $(SRC_DIR)/interfaces/xp_port_if.sv $(SRC_DIR)/interfaces/ddr_if.sv $(SRC_DIR)/sn_f.sv tb_sn_f_multichannel_properties.sv
+	vsim -c tb_sn_f_multichannel_properties -do "run -all; quit"
+else
+	@echo "Unsupported simulator: $(SIM)"
+	@exit 1
+endif
