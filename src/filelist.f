@@ -27,3 +27,12 @@ src/slc_cache.sv
 src/directory_manager.sv
 src/mesi_state_machine.sv
 src/snoop_filter.sv
+src/l1_cache.sv
+src/rn_f.sv
+src/hn_f.sv
+src/sn_f.sv
+
+# System integration modules
+src/coh_noc_config.sv
+src/coh_noc_system.sv
+src/coh_noc_system_configurable.sv
